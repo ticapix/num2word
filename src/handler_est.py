@@ -2,7 +2,7 @@
 
 from math import trunc
 
-places = ["", "tuhat, ", "miljon ", "mijard ", "triljon "]
+places = ["", "tuhat ", "miljon ", "mijard ", "triljon "]
 
 digit = ["null ", "üks ", "kaks ", "kolm ", "neli ", "viis ", "kuus ", "seitse ", "kaheksa ", "üheksa "]
 
@@ -51,20 +51,22 @@ def euro(event, context=None):
     return {"body": word}
 
 
-def test(n):
-    print(n, euro({"queryStringParameters": {"n": str(n)}})['body'])
+def test(number, word):
+    result = euro({"queryStringParameters": {"n": str(number)}})['body']
+    print(number, result)
+    assert result == word
 
 
 if __name__ == '__main__':
-    test(0)
-    test(1)
-    test(-1)
-    test(10)
-    test(-123)
-    test(456)
-    test(1001)
-    test(9090)
-    test(10**9 + 1)
-    test(0.10)
-    test(1.789)
-    test(-110.45)
+    test(0, 'null eurot ja null senti')
+    test(1, 'üks euro ja null senti')
+    test(-1, 'miinus üks euro ja null senti')
+    test(10, 'kümme eurot ja null senti')
+    test(-123, 'miinus üks sada kaks kümmend kolm eurot ja null senti')
+    test(456, 'neli sada viis kümmend kuus eurot ja null senti')
+    test(1001, 'üks tuhat üks eurot ja null senti')
+    test(9090, 'üheksa tuhat üheksa kümmend eurot ja null senti')
+    test(10**9 + 1, 'üks mijard üks eurot ja null senti')
+    test(0.10, 'null eurot ja kümme senti')
+    test(1.789, 'üks euro ja seitse kümmend kaheksa senti')
+    test(-110.45, 'miinus üks sada kümme eurot ja neli kümmend viis senti')
