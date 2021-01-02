@@ -48,7 +48,10 @@ def euro(event, context=None):
         word = word + convertInt(whole) + ("euro" if whole == 1 else "eurot") + " ja " + convertInt(decimal) +  ("sent" if decimal == 1 else "senti")
     except Exception as ex:
         word = str(ex)
-    return {"body": word}
+    return {
+        "statusCode": 200,
+        "body": word
+        }
 
 
 def test(number, word):
