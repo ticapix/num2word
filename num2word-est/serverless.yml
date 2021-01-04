@@ -58,6 +58,14 @@ provider:
 #    - exclude-me.py
 #    - exclude-me-dir/**
 
+plugins:
+  - serverless-api-stage
+custom:
+  stageSettings:
+    MethodSettings:
+      ThrottlingBurstLimit: 10
+      ThrottlingRateLimit: 10
+
 functions:
   euro:
     handler: handler_est.euro

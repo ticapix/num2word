@@ -26,11 +26,11 @@ make deps
 ## Create serverless template
 
 ```bash
-serverless create --template aws-python3 --path num2word-est-euro --name num2word-est-euro
+serverless create --template aws-python3 --path num2word-est --name num2word-est
 ```
 
 ## Deploy function
 
 ```bash
-serverless deploy
+cd num2word-est && serverless deploy
 ```
