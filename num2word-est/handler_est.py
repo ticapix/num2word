@@ -54,7 +54,7 @@ def euro(event, context=None):
     try:
         query = event['queryStringParameters']
         query = query if query is not None else {}
-        number = float(query.get('n', 0))
+        number = float(query.get('n', 0).replace(",", "."))
         word = []
         if number < 0:
             word = ["miinus"]
