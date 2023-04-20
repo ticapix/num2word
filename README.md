@@ -7,7 +7,7 @@
 
 ```bash
 $ curl https://dnesxr2s91.execute-api.eu-west-3.amazonaws.com/num2word/est/euro?n=-110.45
-miinus üks sada kümme eurot ja neli kümmend viis senti
+miinus ükssada kümme eurot ja nelikümmend viis senti
 ```
 
 ### Microsoft Excel
@@ -15,7 +15,6 @@ miinus üks sada kümme eurot ja neli kümmend viis senti
 ```
 =WEBSERVICE(CONCAT("https://dnesxr2s91.execute-api.eu-west-3.amazonaws.com/num2word/est/euro?n=",B10))
 ```
-
 
 ## Install Serverless tool
 
